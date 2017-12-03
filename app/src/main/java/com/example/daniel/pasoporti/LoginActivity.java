@@ -10,6 +10,7 @@ import android.util.Patterns;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.example.daniel.pasoporti.Acompanante.AcompananteWelcomeActivity;
 import com.example.daniel.pasoporti.Clases.FontChangeCrawler;
@@ -37,6 +38,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private FirebaseDatabase mDatabase;
     private DatabaseReference mUserReference;
+    private ProgressBar spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +47,9 @@ public class LoginActivity extends AppCompatActivity {
 
         email=(MaterialEditText) findViewById(R.id.login_email);
         password=(MaterialEditText) findViewById(R.id.login_password);
+
+        spinner=(ProgressBar)findViewById(R.id.progressBar);
+        spinner.setVisibility(View.GONE);
 
         mDatabase=FirebaseDatabase.getInstance();
         mUserReference=mDatabase.getReference("Usuarios");
@@ -105,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view) {
-
+        spinner.setVisibility(View.VISIBLE);
         if(!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(password.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
 
 
