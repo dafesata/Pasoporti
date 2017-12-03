@@ -1,5 +1,6 @@
 package com.example.daniel.pasoporti;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
@@ -229,7 +230,7 @@ public class PerfilActivity extends AppCompatActivity {
 
         LayoutInflater li= LayoutInflater.from(this);
         View prompt= li.inflate(R.layout.change_email_pass,null);
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.Theme_AppCompat_Light_Dialog));
+        @SuppressLint("RestrictedApi") AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this,R.style.Theme_AppCompat_Light_Dialog));
 
         alertDialogBuilder.setView(prompt);
 

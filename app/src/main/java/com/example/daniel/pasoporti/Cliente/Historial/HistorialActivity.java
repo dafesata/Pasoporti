@@ -42,7 +42,7 @@ public class HistorialActivity extends AppCompatActivity {
     private String TAG= this.getClass().getName();
     private FirebaseAuth mAuth;
     private FirebaseDatabase mDatabase;
-    private DatabaseReference mUserReference,mAcompanadosReference,mServiciosReference;
+    private DatabaseReference mAcompanadosReference,mServiciosReference;
     private Acompanado acompanado;
 
     private Query query;
@@ -51,7 +51,7 @@ public class HistorialActivity extends AppCompatActivity {
     private ArrayList<Acompanado> acompanadoList;
     private ArrayList<String> keys;
 
-    private Query rQuery,fQuery;
+    private Query rQuery,AQuery;
     private RecyclerView list;
     private ArrayList<String> mAdapterKeys;
     Acompanado Hacompanado;
@@ -140,7 +140,11 @@ public class HistorialActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         Log.d(TAG, "onItemClick: "+position);
                         Intent i= new Intent(HistorialActivity.this,HistorialDetails.class);
+                        Servicio servicio=serviciosList[0].get(position);
+                        i.putExtra("ServicioId",servicio.getUID());
                         startActivity(i);
+
+
                     }
                 });
 
