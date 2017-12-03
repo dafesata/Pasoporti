@@ -79,7 +79,8 @@
                     android:paddingRight="8dp"
                     android:paddingStart="8dp"
                     android:text="Agendar"
-                    android:textColor="@color/colorPrimary" />
+                    android:textColor="@color/colorPrimary"
+                    tools:ignore="OnClick" />
             </LinearLayout>
         </LinearLayout>
 
