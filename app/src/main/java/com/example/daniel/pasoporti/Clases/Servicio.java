@@ -18,9 +18,27 @@ import java.util.Map;
 
 public class Servicio {
     String UID,Estado,TipoServicio,Ciudad,DirRecogida,DirLlevar,DirRegreso,Observaciones,Informe;
+    String CAcompanante,CConductor,CVehiculo;
     Long Fecha,Id;
 
+
     public Servicio() {
+    }
+    //Fecha Long
+    public Servicio(String UID, String estado, String tipoServicio, String ciudad, String dirRecogida, String dirLlevar, String dirRegreso, String observaciones, Long fecha,Long id,String acompanante,String conductor,String vehiculo) {
+        this.UID = UID;
+        Estado = estado;
+        TipoServicio = tipoServicio;
+        Ciudad = ciudad;
+        DirRecogida = dirRecogida;
+        DirLlevar = dirLlevar;
+        DirRegreso = dirRegreso;
+        Observaciones = observaciones;
+        Fecha = fecha;
+        Id=id;
+        CAcompanante=acompanante;
+        CConductor=conductor;
+        CVehiculo=vehiculo;
     }
 
     public Servicio(String UID, String estado, String tipoServicio, String ciudad, String dirRecogida, String dirLlevar, String dirRegreso, String observaciones, Long fecha,Long id) {
@@ -34,6 +52,27 @@ public class Servicio {
         Observaciones = observaciones;
         Fecha = fecha;
         Id=id;
+        CAcompanante="0";
+        CConductor="0";
+        CVehiculo="0";
+    }
+    //Fecha String
+
+    public Servicio(String UID, String estado, String tipoServicio, String ciudad, String dirRecogida, String dirLlevar, String dirRegreso, String observaciones,String fecha,String hora,Long id,String acompanante,String conductor,String vehiculo) {
+        this.UID = UID;
+        Estado = estado;
+        TipoServicio = tipoServicio;
+        Ciudad = ciudad;
+        DirRecogida = dirRecogida;
+        DirLlevar = dirLlevar;
+        DirRegreso = dirRegreso;
+        Observaciones = observaciones;
+        Fecha=parseDate(fecha,hora);
+        Id=id;
+        CAcompanante=acompanante;
+        CConductor=conductor;
+        CVehiculo=vehiculo;
+
     }
 
     public Servicio(String UID, String estado, String tipoServicio, String ciudad, String dirRecogida, String dirLlevar, String dirRegreso, String observaciones,String fecha,String hora,Long id) {
@@ -47,6 +86,9 @@ public class Servicio {
         Observaciones = observaciones;
         Fecha=parseDate(fecha,hora);
         Id=id;
+        CAcompanante="0";
+        CConductor="0";
+        CVehiculo="0";
 
     }
 
@@ -63,6 +105,9 @@ public class Servicio {
         result.put("observaciones",Observaciones);
         result.put("fecha",Fecha);
         result.put("id",Id);
+        result.put("cacompanante",CAcompanante);
+        result.put("cconductor",CConductor);
+        result.put("cvehiculo",CVehiculo);
         return result;
     }
 
@@ -178,6 +223,30 @@ public class Servicio {
         Id = id;
     }
 
+    public String getCAcompanante() {
+        return CAcompanante;
+    }
+
+    public void setCAcompanante(String CAcompanante) {
+        this.CAcompanante = CAcompanante;
+    }
+
+    public String getCConductor() {
+        return CConductor;
+    }
+
+    public void setCConductor(String CConductor) {
+        this.CConductor = CConductor;
+    }
+
+    public String getCVehiculo() {
+        return CVehiculo;
+    }
+
+    public void setCVehiculo(String CVehiculo) {
+        this.CVehiculo = CVehiculo;
+    }
+
     public Servicio getConvertedObject(DataSnapshot snapshot) {
         String UID= (String)snapshot.child("uid").getValue();
         String Estado= (String)snapshot.child("estado").getValue();
@@ -189,8 +258,10 @@ public class Servicio {
         String Observaciones= (String)snapshot.child("observaciones").getValue();
         Long Id=(Long) snapshot.child("id").getValue() ;
         Long Fecha =(Long) snapshot.child("fecha").getValue();
+        String acompanante=(String)snapshot.child("Cacompanante").getValue();
+        String conductor=(String)snapshot.child("Cconductor").getValue();
+        String vehiculo=(String)snapshot.child("Cvehiculo").getValue();
 
-
-        return new Servicio(UID,Estado,TipoServicio,Ciudad,dirRecogida,dirLlevar,dirRegreso,Observaciones,Fecha,Id);
+        return new Servicio(UID,Estado,TipoServicio,Ciudad,dirRecogida,dirLlevar,dirRegreso,Observaciones,Fecha,Id,acompanante,conductor,vehiculo);
     }
 }

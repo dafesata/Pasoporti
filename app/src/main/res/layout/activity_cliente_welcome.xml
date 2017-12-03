@@ -123,6 +123,7 @@
                         android:layout_height="96dp"
                         android:background="@color/colorPrimary"
                         android:scaleType="fitCenter"
+                        android:onClick="onClick_ServiciosActivos"
                         app:srcCompat="@drawable/clienteprincipalservicios" />
 
                     <TextView

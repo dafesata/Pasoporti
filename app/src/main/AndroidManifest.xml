@@ -55,6 +55,9 @@
         <activity
             android:name=".Cliente.Historial.HistorialDetails"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ServicioActivo.ServicioActivo"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

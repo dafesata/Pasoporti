@@ -65,6 +65,34 @@ public class HistorialDetails extends AppCompatActivity {
         CVehiculo=(MaterialEditText) findViewById(R.id.historial_califveh);
         TipoServicio=(MaterialEditText) findViewById(R.id.historial_tiposerv);
 
+        IdServicio.setFocusable(false);
+        IdServicio.setFocusableInTouchMode(false);
+        Nombre.setFocusable(false);
+        Nombre.setFocusableInTouchMode(false);
+        TipoId.setFocusable(false);
+        TipoId.setFocusableInTouchMode(false);
+        Identificacion.setFocusable(false);
+        Identificacion.setFocusableInTouchMode(false);
+        DirRecogida.setFocusable(false);
+        DirRecogida.setFocusableInTouchMode(false);
+        DirCita.setFocusable(false);
+        DirCita.setFocusableInTouchMode(false);
+        DirFinal.setFocusable(false);
+        DirFinal.setFocusableInTouchMode(false);
+        Informe.setFocusable(false);
+        Informe.setFocusableInTouchMode(false);
+        Acompanante.setFocusable(false);
+        Acompanante.setFocusableInTouchMode(false);
+        CAcompanante.setFocusable(false);
+        CAcompanante.setFocusableInTouchMode(false);
+        CConductor.setFocusable(false);
+        CConductor.setFocusableInTouchMode(false);
+        CVehiculo.setFocusable(false);
+        CVehiculo.setFocusableInTouchMode(false);
+        TipoServicio.setFocusable(false);
+        TipoServicio.setFocusableInTouchMode(false);
+
+
         mDatabase=FirebaseDatabase.getInstance();
         mAuth= FirebaseAuth.getInstance();
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -104,7 +132,7 @@ public class HistorialDetails extends AppCompatActivity {
                             Falta Informacion Acompañante
                          */
                         TipoServicio.setText(servicio.getTipoServicio());
-                        TipoServicio.setText(servicio.getInforme());
+                        Informe.setText(servicio.getInforme());
 
                     }
 
@@ -126,5 +154,10 @@ public class HistorialDetails extends AppCompatActivity {
     }
 
     public void onClick_Inicio(View view) {
+        finish();
+    }
+
+    public void onClick_Cerrar(View view) {
+        finish();
     }
 }

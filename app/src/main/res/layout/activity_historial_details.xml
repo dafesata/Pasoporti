@@ -139,9 +139,10 @@
                             android:id="@+id/historial_tipoDoc"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Tipo de identificación"
+                            android:hint="Tipo identificación"
                             android:inputType="text"
                             app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabelTextSize="10sp"
                             app:met_floatingLabel="highlight"
                             app:met_hideUnderline="true" />
 
@@ -341,6 +342,7 @@
                             android:hint="Calificación acompañante"
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabelTextSize="10sp"
                             app:met_floatingLabel="highlight"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
@@ -365,6 +367,7 @@
                             android:hint="Calificación conductor"
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabelTextSize="10sp"
                             app:met_floatingLabel="highlight"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
@@ -389,6 +392,7 @@
                             android:hint="Calificación vehículo"
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabelTextSize="10sp"
                             app:met_floatingLabel="highlight"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
@@ -438,7 +442,7 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:paddingStart="8dp"
-                        android:text="Agendar"
+                        android:text="Cerrar"
                         android:textColor="@color/colorPrimary"
                         tools:ignore="OnClick" />
                 </LinearLayout>
