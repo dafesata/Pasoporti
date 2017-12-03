@@ -84,7 +84,7 @@ public class ProgramarServicioActivity extends AppCompatActivity implements  Pro
     private Acompanado SAcompanado;
 
     private FirebaseDatabase mDatabase;
-    private DatabaseReference mAcompanadosReference,mServiciosReference;
+    private DatabaseReference mAcompanadosReference,mServiciosReference,mId;
     private FirebaseAuth mAuth;
 
     private Query query;
@@ -101,6 +101,7 @@ public class ProgramarServicioActivity extends AppCompatActivity implements  Pro
         mDatabase= FirebaseDatabase.getInstance();
         mAcompanadosReference = mDatabase.getReference("Acompanados");
         mServiciosReference=mDatabase.getReference("Servicios");
+        mId=mDatabase.getReference("id");
         mAuth= FirebaseAuth.getInstance();
 
 
@@ -842,10 +843,52 @@ public class ProgramarServicioActivity extends AppCompatActivity implements  Pro
         }
         if(mViewPagerServicio.getPagingEnabled()){
             final Long[] newId = new Long[1];
-            mServiciosReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            mId.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    newId[0] =dataSnapshot.getChildrenCount()+1;
+                    newId[0] =(Long)dataSnapshot.getValue();
+                    final String key=mServiciosReference.push().getKey();
+                    Servicio newServicio= new Servicio(key,"Sin Aprobar",getTipoServivio(),getCiudad(),getDirRecogida(),getDirLlevar(),getDirRegreso(),getObservaciones(),getFecha(),getHora(),newId[0]);
+                    Map<String,Object> ServicioValues= newServicio.toMap();
+
+                    Map<String,Object> childUpdates=new HashMap<>();
+                    childUpdates.put("/Usuarios/"+mAuth.getCurrentUser().getUid()+"/Servicios/"+key,true);
+                    childUpdates.put("/Acompanados/"+SAcompanado.getUID()+"/Servicios/"+key,true);
+                    childUpdates.put("/Servicios/"+key,ServicioValues);
+                    mDatabase.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            mServiciosReference.child(key).child("Usuario").child(mAuth.getCurrentUser().getUid()).setValue(true);
+                            mServiciosReference.child(key).child("Acompanado").child(SAcompanado.getUID()).setValue(true);
+                            mId.setValue((newId[0]+1));
+
+                            @SuppressLint("RestrictedApi") AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(ProgramarServicioActivity.this,R.style.Theme_AppCompat_Light_Dialog));
+                            alertDialogBuilder.setMessage("Hemos recibido tu solicitud. Pronto estaremos confirmando tu servicio de acompañamiento")
+                                    .setCancelable(false)
+                                    .setPositiveButton("Aceptar", null);
+                            final AlertDialog alertDialog=alertDialogBuilder.create();
+
+                            alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
+                                @Override
+                                public void onShow(DialogInterface dialog) {
+                                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(alertDialog.getContext(), R.color.colorPrimary));
+
+                                    Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
+
+                                    button.setOnClickListener(new View.OnClickListener() {
+                                        @Override
+                                        public void onClick(View v) {
+                                            Intent i= new Intent(ProgramarServicioActivity.this,ClienteWelcomeActivity.class);
+                                            startActivity(i);
+                                        }
+                                    });
+                                }
+                            });
+
+                            alertDialog.show();
+
+                        }
+                    });
                 }
 
                 @Override
@@ -853,53 +896,6 @@ public class ProgramarServicioActivity extends AppCompatActivity implements  Pro
 
                 }
             });
-
-            final String key=mServiciosReference.push().getKey();
-
-            Servicio newServicio= new Servicio(key,"Sin Aprobar",getTipoServivio(),getCiudad(),getDirRecogida(),getDirLlevar(),getDirRegreso(),getObservaciones(),getFecha(),getHora(),newId[0]);
-            Map<String,Object> ServicioValues= newServicio.toMap();
-
-            Map<String,Object> childUpdates=new HashMap<>();
-            childUpdates.put("/Usuarios/"+mAuth.getCurrentUser().getUid()+"/Servicios/"+key,true);
-            childUpdates.put("/Acompanados/"+SAcompanado.getUID()+"/Servicios/"+key,true);
-            childUpdates.put("/Servicios/"+key,ServicioValues);
-
-           mDatabase.getReference().updateChildren(childUpdates).addOnCompleteListener(new OnCompleteListener<Void>() {
-               @Override
-               public void onComplete(@NonNull Task<Void> task) {
-                       mServiciosReference.child(key).child("Usuario").child(mAuth.getCurrentUser().getUid()).setValue(true);
-                       mServiciosReference.child(key).child("Acompanado").child(SAcompanado.getUID()).setValue(true);
-
-                   @SuppressLint("RestrictedApi") AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(ProgramarServicioActivity.this,R.style.Theme_AppCompat_Light_Dialog));
-                   alertDialogBuilder.setMessage("Hemos recibido tu solicitud. Pronto estaremos confirmando tu servicio de acompañamiento")
-                    .setCancelable(false)
-                   .setPositiveButton("Aceptar", null);
-                   final AlertDialog alertDialog=alertDialogBuilder.create();
-
-                   alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
-                       @Override
-                       public void onShow(DialogInterface dialog) {
-                           alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(alertDialog.getContext(), R.color.colorPrimary));
-
-                           Button button = ((AlertDialog) dialog).getButton(AlertDialog.BUTTON_POSITIVE);
-
-                           button.setOnClickListener(new View.OnClickListener() {
-                               @Override
-                               public void onClick(View v) {
-                                   Intent i= new Intent(ProgramarServicioActivity.this,ClienteWelcomeActivity.class);
-                                   startActivity(i);
-                               }
-                           });
-                       }
-                   });
-
-                   alertDialog.show();
-
-               }
-           });
-
-
-
 
         }
     }

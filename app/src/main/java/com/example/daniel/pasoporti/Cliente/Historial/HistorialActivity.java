@@ -139,6 +139,8 @@ public class HistorialActivity extends AppCompatActivity {
                     @Override
                     public void onItemClick(View view, int position) {
                         Log.d(TAG, "onItemClick: "+position);
+                        Intent i= new Intent(HistorialActivity.this,HistorialDetails.class);
+                        startActivity(i);
                     }
                 });
 
@@ -169,6 +171,8 @@ public class HistorialActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(View view, int position) {
                             Log.d(TAG, "onItemClick: "+position);
+                            Intent i= new Intent(HistorialActivity.this,HistorialDetails.class);
+                            startActivity(i);
                         }
                     });
 

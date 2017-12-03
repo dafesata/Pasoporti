@@ -26,4 +26,6 @@
     <string name="title_activity_acompanados">AcompanadosActivity</string>
     <string name="observacionesservicio">Por último, indicanos información adicional que debamos saber sobre la persona que acompañaremos(edad,discapacidad o dificultad para moverse,medicamentos que toma o que deba tomar durante el servicio, información que se deba reportaren el lugar al que la llevaremos, etc)</string>
     <string name="title_activity_historial">HistorialActivity</string>
+    <string name="idservicio" />
+    <string name="id_servicio">Id Servicio</string>
 </resources>
