@@ -87,7 +87,7 @@ public class HistorialDetails extends AppCompatActivity {
         mServiciosReference.child(UID).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                servicio=(Servicio) dataSnapshot.getValue();
+                servicio=new Servicio().getConvertedObject(dataSnapshot);
 
                 mUserReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override

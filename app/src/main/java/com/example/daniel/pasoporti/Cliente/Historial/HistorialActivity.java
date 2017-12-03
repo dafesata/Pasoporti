@@ -140,7 +140,7 @@ public class HistorialActivity extends AppCompatActivity {
                     public void onItemClick(View view, int position) {
                         Log.d(TAG, "onItemClick: "+position);
                         Intent i= new Intent(HistorialActivity.this,HistorialDetails.class);
-                        Servicio servicio=serviciosList[0].get(position);
+                        Servicio servicio=mCustomAdapterHistorial[0].getItem(position);
                         i.putExtra("ServicioId",servicio.getUID());
                         startActivity(i);
 

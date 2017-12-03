@@ -2,6 +2,7 @@ package com.example.daniel.pasoporti.Clases;
 
 import android.support.annotation.Nullable;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
 
 import java.text.DateFormat;
@@ -175,5 +176,21 @@ public class Servicio {
 
     public void setId(Long id) {
         Id = id;
+    }
+
+    public Servicio getConvertedObject(DataSnapshot snapshot) {
+        String UID= (String)snapshot.child("uid").getValue();
+        String Estado= (String)snapshot.child("estado").getValue();
+        String TipoServicio= (String)snapshot.child("tipoServicio").getValue();
+        String Ciudad= (String)snapshot.child("ciudad").getValue();
+        String dirRecogida= (String)snapshot.child("dirRecogida").getValue();
+        String dirLlevar= (String)snapshot.child("dirLlevar").getValue();
+        String dirRegreso= (String)snapshot.child("dirRegreso").getValue();
+        String Observaciones= (String)snapshot.child("observaciones").getValue();
+        Long Id=(Long) snapshot.child("id").getValue() ;
+        Long Fecha =(Long) snapshot.child("fecha").getValue();
+
+
+        return new Servicio(UID,Estado,TipoServicio,Ciudad,dirRecogida,dirLlevar,dirRegreso,Observaciones,Fecha,Id);
     }
 }
