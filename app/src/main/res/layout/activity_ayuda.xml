@@ -6,37 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.daniel.pasoporti.Cliente.Ayuda.AyudaActivity">
 
-    <LinearLayout
-
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
         <LinearLayout
+
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <ImageButton
-                android:id="@+id/imageButtonInicio"
-                android:layout_width="120dp"
-                android:layout_height="90dp"
-                android:background="@color/colorPrimary"
-                android:onClick="onClick_Inicio"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/logo" />
-        </LinearLayout>
-
-        <ScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/common_google_signin_btn_text_light_default"
+            android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
@@ -44,222 +18,250 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorPrimary"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/imageButtonInicio"
+                    android:layout_width="120dp"
+                    android:layout_height="90dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onClick_Inicio"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/logo" />
+            </LinearLayout>
+
+            <ScrollView
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical">
-
-
-                <TextView
-                    android:id="@+id/textView15"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="16dp"
-                    android:text="Diligencia este formulario "
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textView13"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:text="Llamanos al 3xxxxxxxx"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textView16"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:text="Escribenos al Whatsapp 3xxxxxxxxx"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textView17"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:text="wrap_content"
-                    android:textColor="@android:color/white"
-                    tools:text="O envia tu mensaje a info@pasoporti.com" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
-
-                    <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/Contacto_nombre"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/nombre_completo"
-                        android:inputType="textCapWords"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
-
-                    <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/Contacto_direccion"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/direcci_n"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
-
-                    <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/Contacto_telefono"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/telefono"
-                        android:inputType="number"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
-
-                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                        android:id="@+id/spinner_Ciudad_ciudad"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:focusableInTouchMode="false"
-                        android:hint="Seleccione Ciudad"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
-
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
-
-                    <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/Contacto_email"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="@string/email"
-                        android:inputType="textEmailAddress"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
-
-                </LinearLayout>
+                android:background="@color/common_google_signin_btn_text_light_default"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="0.6"
-                    android:background="@drawable/rounded"
-                    android:orientation="horizontal">
+                    android:orientation="vertical">
 
-                    <com.rengwuxian.materialedittext.MaterialEditText
-                        android:id="@+id/servicio_observaciones"
+
+                    <TextView
+                        android:id="@+id/textView15"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="16dp"
+                        android:text="Diligencia este formulario "
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/textView13"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:text="Llamanos al 3xxxxxxxx"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/textView16"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:text="Escribenos al Whatsapp 3xxxxxxxxx"
+                        android:textColor="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/textView17"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:text="wrap_content"
+                        android:textColor="@android:color/white"
+                        tools:text="O envia tu mensaje a info@pasoporti.com" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/Contacto_nombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/nombre_completo"
+                            android:inputType="textCapWords"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/Contacto_direccion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/direcci_n"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/Contacto_telefono"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/telefono"
+                            android:inputType="number"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
+
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                            android:id="@+id/spinner_Ciudad_ciudad"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:focusableInTouchMode="false"
+                            android:hint="Seleccione Ciudad"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
+
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/Contacto_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="@string/email"
+                            android:inputType="textEmailAddress"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="top|left"
-                        android:hint="Observaciones"
-                        android:inputType="textMultiLine"
-                        app:met_baseColor="@color/colorPrimary"
-                        app:met_floatingLabel="highlight"
-                        app:met_hideUnderline="true" />
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_weight="0.6"
+                        android:background="@drawable/rounded"
+                        android:orientation="horizontal">
 
-                </LinearLayout>
+                        <com.rengwuxian.materialedittext.MaterialEditText
+                            android:id="@+id/servicio_observaciones"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="top|left"
+                            android:hint="Observaciones"
+                            android:inputType="textMultiLine"
+                            app:met_baseColor="@color/colorPrimary"
+                            app:met_floatingLabel="highlight"
+                            app:met_hideUnderline="true" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_weight="1"
-                    android:orientation="horizontal">
+                    </LinearLayout>
 
-                    <Button
-                        android:id="@+id/buttonContacto_Cancelar"
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="16dp"
+                        android:layout_gravity="end"
+                        android:layout_marginBottom="8dp"
+                        android:layout_marginEnd="24dp"
+                        android:layout_marginStart="24dp"
+                        android:layout_marginTop="8dp"
                         android:layout_weight="1"
-                        android:background="@android:color/white"
-                        android:onClick="onClick_Agendar"
-                        android:paddingEnd="8dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingStart="8dp"
-                        android:text="Cancelar"
-                        android:textColor="@color/colorPrimary" />
+                        android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/buttonContacto_Enviar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:background="@android:color/white"
-                        android:onClick="onClick_Agendar"
-                        android:paddingEnd="8dp"
-                        android:paddingLeft="8dp"
-                        android:paddingRight="8dp"
-                        android:paddingStart="8dp"
-                        android:text="Enviar"
-                        android:textColor="@color/colorPrimary" />
+                        <Button
+                            android:id="@+id/buttonContacto_Cancelar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="16dp"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:onClick="onClick_Cancelar"
+                            android:paddingEnd="8dp"
+
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingStart="8dp"
+                            android:text="Cancelar"
+                            android:textColor="@color/colorPrimary" />
+
+                        <Button
+                            android:id="@+id/buttonContacto_Enviar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:background="@android:color/white"
+                            android:onClick="onClick_Enviar"
+                            android:paddingEnd="8dp"
+                            android:paddingLeft="8dp"
+                            android:paddingRight="8dp"
+                            android:paddingStart="8dp"
+                            android:text="Enviar"
+                            android:textColor="@color/colorPrimary" />
+                    </LinearLayout>
+
                 </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
+            </ScrollView>
 
 
-    </LinearLayout>
+        </LinearLayout>
+
 
 </android.support.constraint.ConstraintLayout>

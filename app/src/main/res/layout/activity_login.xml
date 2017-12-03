@@ -11,117 +11,124 @@
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:weightSum="1">
 
-            <ImageView
-                android:id="@+id/iconbienv"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                app:srcCompat="@drawable/logo" />
-        </LinearLayout>
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal"
-            android:background="@drawable/rounded">
+                <ImageView
+                    android:id="@+id/iconbienv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    app:srcCompat="@drawable/logo" />
+            </LinearLayout>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/login_email"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded">
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/login_password"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Contraseña"
-                android:inputType="textPassword"
-                app:met_minCharacters="6"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <Button
-                android:id="@+id/button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/input_password"
-                android:layout_alignLeft="@+id/input_password"
-                android:layout_alignRight="@+id/input_password"
-                android:layout_alignStart="@+id/input_password"
-                android:layout_below="@+id/input_password"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="16dp"
-                android:layout_weight="1"
-                android:background="@android:color/white"
-                android:onClick="onClick_Login"
-                android:text="Entrar"
-                android:textColor="@color/colorPrimary" />
-        </LinearLayout>
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/login_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
 
-            <TextView
-                android:id="@+id/textViewNewUser"
-                android:layout_width="wrap_content"
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@+id/button"
-                android:layout_alignLeft="@+id/button"
-                android:layout_alignRight="@+id/button"
-                android:layout_alignStart="@+id/button"
-                android:layout_below="@+id/button"
-                android:layout_marginTop="31dp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:onClick="onClick_Register"
-                android:text="Nuevo Usuario"
-                android:textColor="@android:color/white" />
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Contraseña"
+                    android:inputType="textPassword"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true"
+                    app:met_minCharacters="6" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/input_password"
+                    android:layout_alignLeft="@+id/input_password"
+                    android:layout_alignRight="@+id/input_password"
+                    android:layout_alignStart="@+id/input_password"
+                    android:layout_below="@+id/input_password"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:onClick="onClick_Login"
+                    android:text="Entrar"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textViewNewUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/button"
+                    android:layout_alignLeft="@+id/button"
+                    android:layout_alignRight="@+id/button"
+                    android:layout_alignStart="@+id/button"
+                    android:layout_below="@+id/button"
+                    android:layout_marginTop="31dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:onClick="onClick_Register"
+                    android:text="Nuevo Usuario"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+
         </LinearLayout>
 
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
-     <ProgressBar
+    <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"

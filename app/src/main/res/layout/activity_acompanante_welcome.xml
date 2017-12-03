@@ -8,136 +8,143 @@
     tools:background="@color/colorPrimary"
     tools:context="com.example.daniel.pasoporti.Acompanante.AcompananteWelcomeActivity">
 
-    <LinearLayout
-        android:layout_width="368dp"
-        android:layout_height="551dp"
-        android:orientation="vertical"
-        android:weightSum="1"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginLeft="8dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp">
-
-        <ImageButton
-            android:id="@+id/imageButtonLogo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="@color/colorPrimary"
-            app:srcCompat="@drawable/logo" />
-
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
         <LinearLayout
-            android:id="@+id/menu2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/menu1"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:gravity="top|center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="8dp">
+            android:layout_marginBottom="8dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:layout_marginTop="8dp"
+            android:orientation="vertical"
+            android:weightSum="1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageButton
+                android:id="@+id/imageButtonLogo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                app:srcCompat="@drawable/logo" />
+
+
+            <LinearLayout
+                android:id="@+id/menu2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/menu1"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="top|center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonAcompanante"
+                        android:layout_width="match_parent"
+                        android:layout_height="96dp"
+                        android:background="@color/colorPrimary"
+                        android:onClick="onClick_Acompanante"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/iconoacompanante" />
+
+                    <TextView
+                        android:id="@+id/textView5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Acompañante"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/menu1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageButtonLogo"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:gravity="top|center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+
+                    android:orientation="vertical">
+
+                    <ImageButton
+                        android:id="@+id/imageButtonCliente"
+                        android:layout_width="match_parent"
+                        android:layout_height="96dp"
+                        android:background="@color/colorPrimary"
+                        android:onClick="onClick_Cliente"
+                        android:scaleType="fitCenter"
+                        app:srcCompat="@drawable/clienteprincipalperfil" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Cliente"
+                        android:textColor="@android:color/white" />
+                </LinearLayout>
+
+
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/menu2"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
                 android:orientation="vertical">
 
-                <ImageButton
-                    android:id="@+id/imageButtonAcompanante"
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:background="@color/colorPrimary"
-                    android:onClick="onClick_Acompanante"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/iconoacompanante" />
+                <TextView
+                    android:id="@+id/textViewUsuario"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="26dp"
+                    android:gravity="center"
+                    android:text="TextView"
+                    android:textColor="@android:color/white" />
 
                 <TextView
-                    android:id="@+id/textView5"
-                    android:layout_width="match_parent"
+                    android:id="@+id/textViewLogOut"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/textViewUsuario"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
                     android:gravity="center"
-                    android:text="Acompañante"
+                    android:onClick="onClick_LogOut"
+                    android:text="@string/cerrar_sesi_n"
                     android:textColor="@android:color/white" />
-            </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/menu1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imageButtonLogo"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="16dp"
-            android:gravity="top|center"
-            android:orientation="horizontal"
-            android:layout_marginLeft="8dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-
-                android:orientation="vertical">
-
-                <ImageButton
-                    android:id="@+id/imageButtonCliente"
-                    android:layout_width="match_parent"
-                    android:layout_height="96dp"
-                    android:background="@color/colorPrimary"
-                    android:onClick="onClick_Cliente"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@drawable/clienteprincipalperfil" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Cliente"
-                    android:textColor="@android:color/white" />
             </LinearLayout>
 
-
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/menu2"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/textViewUsuario"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginTop="26dp"
-                android:gravity="center"
-                android:text="TextView"
-                android:textColor="@android:color/white" />
-
-            <TextView
-                android:id="@+id/textViewLogOut"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/textViewUsuario"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:gravity="center"
-                android:onClick="onClick_LogOut"
-                android:text="@string/cerrar_sesi_n"
-                android:textColor="@android:color/white" />
-
-        </LinearLayout>
-
-    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.constraint.ConstraintLayout>

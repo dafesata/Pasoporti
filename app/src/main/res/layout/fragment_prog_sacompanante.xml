@@ -8,69 +8,75 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="157dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="60dp"
-            android:gravity="center"
-            android:text="A quien vamos a acompañar?"
-            android:textColor="@android:color/white"
-            android:textSize="18sp" />
-
-
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/spinner_Servicio_Acompanado"
+            <TextView
+                android:id="@+id/textView6"
+                android:layout_width="157dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="60dp"
+                android:gravity="center"
+                android:text="A quien vamos a acompañar?"
+                android:textColor="@android:color/white"
+                android:textSize="18sp" />
+
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:hint="Seleccionar Acompañado"
-                app:met_hideUnderline="true"
-                app:met_floatingLabel="highlight"
-                app:met_baseColor="@color/colorPrimary"
-                />
-        </LinearLayout>
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:orientation="horizontal">
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_Servicio_Acompanado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:hint="Seleccionar Acompañado"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+            </LinearLayout>
 
-            <Button
-                android:id="@+id/buttonServicio_addAcompanado"
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="@android:color/white"
-                android:onClick="onClick_AddAcompanado"
-                android:paddingEnd="8dp"
-                android:paddingLeft="8dp"
-                android:paddingRight="8dp"
-                android:paddingStart="8dp"
-                android:text="Agregar Acompanado"
-                android:textColor="@color/colorPrimary" />
+                android:layout_gravity="end"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/buttonServicio_addAcompanado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@android:color/white"
+                    android:onClick="onClick_AddAcompanado"
+                    android:paddingEnd="8dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingStart="8dp"
+                    android:text="Agregar Acompanado"
+                    android:textColor="@color/colorPrimary" />
+            </LinearLayout>
+
+
         </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
-    </LinearLayout>
 </FrameLayout>

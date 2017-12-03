@@ -11,78 +11,85 @@
    <!-- Nombre -->
 
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="60dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingTop="60dp">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/register_nombre"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/nombre_completo"
-                android:inputType="textCapWords"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/register_nombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/nombre_completo"
+                    android:inputType="textCapWords"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                    android:id="@+id/spinner_TipoDoc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:focusableInTouchMode="false"
+                    android:hint="@string/tipo_de_documento"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/register_identificacion"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Número de Identificacion"
+                    android:inputType="number"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+
+            </LinearLayout>
+
 
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+    </android.support.v4.widget.NestedScrollView>
 
-            <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
-                android:id="@+id/spinner_TipoDoc"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:focusableInTouchMode="false"
-                android:hint="@string/tipo_de_documento"
-                app:met_hideUnderline="true"
-                app:met_floatingLabel="highlight"
-                app:met_baseColor="@color/colorPrimary"
-               />
-
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/register_identificacion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Número de Identificacion"
-                android:inputType="number"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
-
-
-        </LinearLayout>
-
-
-    </LinearLayout>
 </FrameLayout>

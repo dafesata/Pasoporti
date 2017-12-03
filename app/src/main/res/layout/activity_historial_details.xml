@@ -143,7 +143,6 @@
                             android:inputType="text"
                             app:met_baseColor="@color/colorPrimary"
                             app:met_floatingLabel="highlight"
-                            app:met_floatingLabelTextSize="8sp"
                             app:met_hideUnderline="true" />
 
                     </LinearLayout>
@@ -343,7 +342,6 @@
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
                             app:met_floatingLabel="highlight"
-                            app:met_floatingLabelTextSize="8sp"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
 
@@ -368,7 +366,6 @@
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
                             app:met_floatingLabel="highlight"
-                            app:met_floatingLabelTextSize="8sp"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
 
@@ -393,7 +390,6 @@
                             android:inputType="number"
                             app:met_baseColor="@color/colorPrimary"
                             app:met_floatingLabel="highlight"
-                            app:met_floatingLabelTextSize="8sp"
                             app:met_hideUnderline="true" />
                     </LinearLayout>
                 </LinearLayout>
@@ -442,7 +438,7 @@
                         android:paddingLeft="8dp"
                         android:paddingRight="8dp"
                         android:paddingStart="8dp"
-                        android:text="Cerrar"
+                        android:text="Agendar"
                         android:textColor="@color/colorPrimary"
                         tools:ignore="OnClick" />
                 </LinearLayout>

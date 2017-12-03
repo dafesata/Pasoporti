@@ -10,80 +10,87 @@
     <!-- TODO: Update blank fragment layout -->
 
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:paddingTop="60dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            android:orientation="vertical"
+            android:paddingTop="60dp">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/register_email"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
-                android:inputType="textEmailAddress"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/register_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/email"
+                    android:inputType="textEmailAddress"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
 
-        <!--  Password Label -->
+            </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            <!--  Password Label -->
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/register_password"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/contrase_a"
-                android:inputType="textPassword"
-                app:met_minCharacters="6"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
 
-        </LinearLayout>
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/register_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/contrase_a"
+                    android:inputType="textPassword"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true"
+                    app:met_minCharacters="6" />
 
-        <!--  Confirm Password Label -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            </LinearLayout>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/register_confirm_password"
+            <!--  Confirm Password Label -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/repetir_contrase_a"
-                android:inputType="textPassword"
-                app:met_minCharacters="6"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
 
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/register_confirm_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/repetir_contrase_a"
+                    android:inputType="textPassword"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true"
+                    app:met_minCharacters="6" />
+
+            </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 
 </FrameLayout>

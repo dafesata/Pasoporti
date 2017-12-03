@@ -8,87 +8,95 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <LinearLayout
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="90dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
-
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/servicio_direccion_recogida"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="Dónde lo Recogemos?"
-                android:inputType="text"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
-
-        </LinearLayout>
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+            android:orientation="vertical">
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/servicio_direccion_destino"
+
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Diónde lo Llevamos?"
-                android:inputType="text"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="90dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/servicio_direccion_recogida"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Dónde lo Recogemos?"
+                    android:inputType="text"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/servicio_direccion_destino"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Diónde lo Llevamos?"
+                    android:inputType="text"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_dirRegreso"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/rounded"
+                android:orientation="horizontal">
+
+                <com.rengwuxian.materialedittext.MaterialEditText
+                    android:id="@+id/servicio_direccion_regreso"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="A Dónde te lo Regresamos?"
+                    android:inputType="text"
+                    app:met_baseColor="@color/colorPrimary"
+                    app:met_floatingLabel="highlight"
+                    app:met_hideUnderline="true" />
+
+            </LinearLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox_Servicio_direccion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="24dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:buttonTint="@android:color/white"
+                android:text="Mismo lugar donde lo recogimos"
+                android:textColor="@android:color/white" />
+
 
         </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/layout_dirRegreso"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/rounded"
-            android:orientation="horizontal">
+    </android.support.v4.widget.NestedScrollView>
 
-            <com.rengwuxian.materialedittext.MaterialEditText
-                android:id="@+id/servicio_direccion_regreso"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="A Dónde te lo Regresamos?"
-                android:inputType="text"
-                app:met_baseColor="@color/colorPrimary"
-                app:met_floatingLabel="highlight"
-                app:met_hideUnderline="true" />
-
-        </LinearLayout>
-
-        <CheckBox
-            android:id="@+id/checkBox_Servicio_direccion"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="8dp"
-            android:buttonTint="@android:color/white"
-            android:text="Mismo lugar donde lo recogimos"
-            android:textColor="@android:color/white" />
-
-
-    </LinearLayout>
 </FrameLayout>
