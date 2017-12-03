@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "1837398497",
+    "firebase_url": "https://pasoporti-73b2f.firebaseio.com",
+    "project_id": "pasoporti-73b2f",
+    "storage_bucket": "pasoporti-73b2f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1837398497:android:3b5b2be360c83e88",
+        "android_client_info": {
+          "package_name": "com.example.daniel.pasoporti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1837398497-1tht01foavsrdkdrgmjk9fd8gqmao9g6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.daniel.pasoporti",
+            "certificate_hash": "32cd96c5d79f4279e638f2dcb7de0ec5b900616c"
+          }
+        },
+        {
+          "client_id": "1837398497-13bvlqekhjsoj93i90jkeimc4q891ld8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCU6YUkP8SXvTmObAwfz5_Kox6lluG4lDU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1837398497-13bvlqekhjsoj93i90jkeimc4q891ld8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

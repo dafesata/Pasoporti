@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="tiposDoc">
+        <item>Cédula de Ciudadanía</item>
+        <item>Cédula de Extranjería</item>
+        <item>Pasaporte</item>
+        <item>Tarjeta de Identidad</item>
+    </string-array>
+
+    <string-array name="ciudades">
+        <item>Bogotá</item>
+    </string-array>
+
+    <string-array name="tiposServicios">
+        <item>Acompañamiento Adulto Mayor</item>
+        <item>Acompañamiento a Servicios Médicos</item>
+        <item>Divercasa(Para Adultos Mayores)</item>
+        <item>Transporte Especial Para Niños</item>
+        <item>Transportes Especializados</item>
+    </string-array>
+
+    <string-array name="tiposParentescos">
+        <item>ABUELO(A)</item>
+        <item>CUÑADO(A)</item>
+        <item>ESPOSO(A)</item>
+        <item>HERMANO(A)</item>
+        <item>HIJO(A)</item>
+        <item>NIETO(A)</item>
+        <item>NINGUNO</item>
+        <item>NUERA</item>
+        <item>YERNO</item>
+        <item>PAPA</item>
+        <item>MAMA</item>
+        <item>PRIMO(A)</item>
+        <item>SOBRINO(A)</item>
+        <item>SUEGRO(A)</item>
+        <item>TIO(A)</item>
+    </string-array>
+</resources>

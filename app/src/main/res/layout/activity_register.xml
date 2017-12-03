@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:background="@color/colorPrimary"
+    tools:background="@color/colorPrimary"
+    tools:context="com.example.daniel.pasoporti.Registro.RegisterActivity">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButtonInicio"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical|center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="142dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.07"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="Vamos a necesitar unos datos para que puedas crear tu usuario"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.example.daniel.pasoporti.NonSwipeableViewPager
+                android:id="@+id/container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                />
+
+            <ImageButton
+                android:id="@+id/left_nav"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom|left"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_chevron_left_black_24dp" />
+
+            <com.layer_net.stepindicator.StepIndicator
+                android:id="@+id/step_indicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="16dp"
+                android:background="@color/colorPrimary"
+                android:clickable="false"
+                app:siBackgroundColor="@android:color/darker_gray"
+                app:siSecondaryTextColor="@android:color/white"
+                app:siStepColor="@color/colorYellow"
+                app:siStepCount="3"
+                app:siTextColor="@color/colorPrimary" />
+
+            <ImageButton
+                android:id="@+id/right_nav"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom|right"
+                android:background="@android:color/transparent"
+                android:src="@drawable/ic_chevron_right_black_24dp" />
+
+
+        </FrameLayout>
+
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

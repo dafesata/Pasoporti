@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_content"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context="com.example.daniel.pasoporti.Cliente.ProgramarServicios.ProgramarServicioActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButtonInicio"
+                android:layout_width="120dp"
+                android:layout_height="90dp"
+                android:background="@color/colorPrimary"
+                android:scaleType="fitCenter"
+                android:onClick="onClick_Inicio"
+                app:srcCompat="@drawable/logo" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/common_google_signin_btn_text_light_default"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageButton
+                    android:id="@+id/left_nav_servicio"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="bottom|left"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_chevron_left_black_24dp" />
+
+                <com.layer_net.stepindicator.StepIndicator
+                    android:id="@+id/step_indicator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_margin="16dp"
+                    android:background="@android:color/transparent"
+                    android:clickable="false"
+                    app:siBackgroundColor="@android:color/darker_gray"
+                    app:siSecondaryTextColor="@android:color/black"
+                    app:siStepColor="@color/colorYellow"
+                    app:siStepCount="4"
+                    app:siTextColor="@color/colorPrimary" />
+
+                <ImageButton
+                    android:id="@+id/right_nav_servicio"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="bottom|right"
+                    android:background="@android:color/transparent"
+                    android:src="@drawable/ic_chevron_right_black_24dp" />
+
+                <com.example.daniel.pasoporti.NonSwipeableViewPager
+                    android:id="@+id/container"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+            </FrameLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>
