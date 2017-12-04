@@ -110,7 +110,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void onClick_Login(View view) {
-        spinner.setVisibility(View.VISIBLE);
+
         if(!TextUtils.isEmpty(email.getText().toString()) && !TextUtils.isEmpty(password.getText().toString()) && Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()) {
 
 
@@ -119,11 +119,12 @@ public class LoginActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             Log.d(TAG, "signInWithEmail:onComplete:" + task.isSuccessful());
-
+                            spinner.setVisibility(View.VISIBLE);
                             // If sign in fails, display a message to the user. If sign in succeeds
                             // the auth state listener will be notified and logic to handle the
                             // signed in user can be handled in the listener.
                             if (!task.isSuccessful()) {
+                                spinner.setVisibility(View.GONE);
                                 if (password.getText().toString().length() < 6) {
                                     Toast.makeText(LoginActivity.this, "La contraseña debe tener mas de 6 caracteres", Toast.LENGTH_SHORT).show();
 
@@ -142,6 +143,7 @@ public class LoginActivity extends AppCompatActivity {
                                 mUserReference.child(usuario.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
                                     @Override
                                     public void onDataChange(DataSnapshot dataSnapshot) {
+                                        spinner.setVisibility(View.GONE);
                                         Usuario usuario = dataSnapshot.getValue(Usuario.class);
                                         if (usuario.getRol().equals("Cliente")) {
                                             Intent i = new Intent(LoginActivity.this, ClienteWelcomeActivity.class);
