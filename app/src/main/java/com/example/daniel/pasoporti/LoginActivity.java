@@ -1,5 +1,6 @@
 package com.example.daniel.pasoporti;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 import android.widget.ProgressBar;
+
 
 import com.example.daniel.pasoporti.Acompanante.AcompananteWelcomeActivity;
 import com.example.daniel.pasoporti.Clases.FontChangeCrawler;
@@ -138,6 +140,7 @@ public class LoginActivity extends AppCompatActivity {
                                 Log.w(TAG, "signInWithEmail:failed", task.getException());
 
                             } else {
+
                                 FirebaseUser usuario = mAuth.getCurrentUser();
 
                                 mUserReference.child(usuario.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
