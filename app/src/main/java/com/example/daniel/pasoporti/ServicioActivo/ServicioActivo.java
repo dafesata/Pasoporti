@@ -1,6 +1,7 @@
 package com.example.daniel.pasoporti.ServicioActivo;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -28,6 +29,8 @@ public class ServicioActivo extends AppCompatActivity {
     private DatabaseReference mAcompanadosReference,mServiciosReference,mUserReference;
     private Query query;
     private Acompanado acompanado;
+    private ViewPager mViewPager;
+    private ViewPagerAdapterFather pagerAdapter;
 
 
     private TabLayout tabs;
@@ -41,6 +44,8 @@ public class ServicioActivo extends AppCompatActivity {
         serviciosList[0]=new ArrayList<>();
         tabs=(TabLayout) findViewById(R.id.tabs);
         tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
+        mViewPager=(ViewPager) findViewById(R.id.view_pager_parent);
+
         mDatabase= FirebaseDatabase.getInstance();
         mAcompanadosReference = mDatabase.getReference("Acompanados");
         mServiciosReference=mDatabase.getReference("Servicios");
