@@ -1,5 +1,6 @@
 package com.example.daniel.pasoporti.Clases;
 
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.Exclude;
 
 import java.util.HashMap;
@@ -121,5 +122,18 @@ public class Acompanado {
 
     public void setParentesco(String parentesco) {
         Parentesco = parentesco;
+    }
+
+    public Acompanado getConvertedObject(DataSnapshot snapshot) {
+        String Nombre= (String)snapshot.child("nombre").getValue();
+        String TipoId= (String)snapshot.child("tipoId").getValue();
+        String Identificacion= (String)snapshot.child("id").getValue();
+        String Direccion= (String)snapshot.child("direccion").getValue();
+        String Telefono= (String)snapshot.child("telefono").getValue();
+        String Email= (String)snapshot.child("email").getValue();
+        String EPS= (String)snapshot.child("eps").getValue();
+        String UID= (String)snapshot.child("uid").getValue();
+        String Parentesco=(String)snapshot.child("parentesco").getValue();
+        return new Acompanado(Nombre,Email,Direccion,TipoId,UID,Identificacion,Telefono,EPS,Parentesco);
     }
 }
