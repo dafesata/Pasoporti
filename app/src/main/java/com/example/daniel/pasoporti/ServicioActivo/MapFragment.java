@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.ebanx.swipebtn.OnStateChangeListener;
+import com.ebanx.swipebtn.SwipeButton;
 import com.example.daniel.pasoporti.Clases.Servicio;
 import com.example.daniel.pasoporti.R;
 import com.google.android.gms.maps.GoogleMap;
@@ -54,7 +56,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private GoogleMap mGoogleMap;
     private MapView mapView;
     private View v;
-
+    private SwipeButton swipeButton;
 
     public MapFragment() {
         // Required empty public constructor
@@ -92,7 +94,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         v= inflater.inflate(R.layout.fragment_map, container, false);
-
+        swipeButton=(SwipeButton) v.findViewById(R.id.SwipeButton);
         mDatabase= FirebaseDatabase.getInstance();
         mServiciosReference=mDatabase.getReference("Servicios");
         mAuth= FirebaseAuth.getInstance();
@@ -116,6 +118,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
 
         mapView=(MapView) v.findViewById(R.id.map);
+        swipeButton.setOnStateChangeListener(new OnStateChangeListener() {
+            @Override
+            public void onStateChange(boolean active) {
+                Log.d(TAG, "onStateChange: "+active);
+            }
+        });
 
 
         return v;

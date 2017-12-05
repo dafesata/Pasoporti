@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.daniel.pasoporti.NonSwipeableViewPager;
 import com.example.daniel.pasoporti.R;
 
 /**
@@ -28,7 +29,8 @@ public class ParentViewPagerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_parent_viewpager, container, false);
 
-        ViewPager viewPager = (ViewPager) root.findViewById(R.id.viewPager);
+        NonSwipeableViewPager viewPager = (NonSwipeableViewPager) root.findViewById(R.id.viewPager);
+        viewPager.setPagingEnabled(false);
         /** Important: Must use the child FragmentManager or you will see side effects. */
         viewPager.setAdapter(new MyAdapter(getChildFragmentManager()));
 
@@ -65,9 +67,9 @@ public class ParentViewPagerFragment extends Fragment {
         public CharSequence getPageTitle(int position) {
             switch (position){
                 case 0:
-                    return "Map Fragment";
+                    return "Localización";
                 case 1:
-                    return "Details Fragment";
+                    return "Detalles";
             }
             return null;
         }
