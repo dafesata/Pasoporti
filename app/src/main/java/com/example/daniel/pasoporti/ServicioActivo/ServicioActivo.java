@@ -1,11 +1,16 @@
 package com.example.daniel.pasoporti.ServicioActivo;
 
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.TabHost;
 
 import com.example.daniel.pasoporti.Clases.Acompanado;
 import com.example.daniel.pasoporti.Clases.Servicio;
@@ -21,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServicioActivo extends AppCompatActivity {
+public class ServicioActivo extends AppCompatActivity implements MapFragment.OnFragmentInteractionListener,DetailsFragment.OnFragmentInteractionListener{
 
     private String TAG= this.getClass().getName();
     private FirebaseAuth mAuth;
@@ -29,22 +34,18 @@ public class ServicioActivo extends AppCompatActivity {
     private DatabaseReference mAcompanadosReference,mServiciosReference,mUserReference;
     private Query query;
     private Acompanado acompanado;
-    private ViewPager mViewPager;
-    private ViewPagerAdapterFather pagerAdapter;
 
+    private String servicioSelected;
 
-    private TabLayout tabs;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_servicio_activo);
 
-        final List<Servicio>[] serviciosList = new ArrayList[1];
-        serviciosList[0]=new ArrayList<>();
-        tabs=(TabLayout) findViewById(R.id.tabs);
-        tabs.setTabMode(TabLayout.MODE_SCROLLABLE);
-        mViewPager=(ViewPager) findViewById(R.id.view_pager_parent);
+        final FragmentTabHost tabHost = (FragmentTabHost) findViewById(R.id.tabhost);
+
+        tabHost.setup(this, getSupportFragmentManager(), R.id.tabcontent);
 
         mDatabase= FirebaseDatabase.getInstance();
         mAcompanadosReference = mDatabase.getReference("Acompanados");
@@ -60,10 +61,10 @@ public class ServicioActivo extends AppCompatActivity {
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
+                final int[] index = {1};
                 for(DataSnapshot data:dataSnapshot.getChildren()){
-                    Servicio servicio= new Servicio().getConvertedObject(data);
+                    final Servicio servicio= new Servicio().getConvertedObject(data);
                     if (servicio.getEstado().equals("Iniciado") || servicio.getEstado().equals("En Cita") || servicio.getEstado().equals("Retorno")){
-                        serviciosList[0].add(servicio);
                         Query Aquery;
                         Aquery=mAcompanadosReference.orderByChild("Servicios/"+servicio.getUID()).equalTo(true);
                         Aquery.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -71,7 +72,10 @@ public class ServicioActivo extends AppCompatActivity {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 for(DataSnapshot snap:dataSnapshot.getChildren()) {
                                     acompanado = new Acompanado().getConvertedObject(snap);
-                                    tabs.addTab(tabs.newTab().setText(acompanado.getNombre()));
+                                    tabHost.addTab(tabHost.newTabSpec(String.valueOf(servicio.getUID())).setIndicator(acompanado.getNombre()),
+                                            ParentViewPagerFragment.class, null);
+                                    index[0]++;
+
                                 }
                             }
 
@@ -83,7 +87,6 @@ public class ServicioActivo extends AppCompatActivity {
 
                     }
                 }
-
             }
 
             @Override
@@ -92,9 +95,25 @@ public class ServicioActivo extends AppCompatActivity {
             }
         });
 
+        tabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+            @Override
+            public void onTabChanged(String tabId) {
+                servicioSelected=tabHost.getCurrentTabTag();
+
+            }
+        });
+
+
     }
 
-    public void onClick_Inicio(View view) {
-        finish();
+
+    @Override
+    public void onFragmentInteraction(String text) {
+
+    }
+
+    @Override
+    public String getServicio() {
+        return servicioSelected;
     }
 }

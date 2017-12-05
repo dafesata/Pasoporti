@@ -8,207 +8,200 @@
     tools:background="@color/colorPrimary"
     tools:context="com.example.daniel.pasoporti.Cliente.ClienteWelcomeActivity">
 
-    <android.support.v4.widget.NestedScrollView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
+        android:weightSum="1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-        <LinearLayout
+        <ImageButton
+            android:id="@+id/imageButtonLogo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/colorPrimary"
+            app:srcCompat="@drawable/logo" />
+
+
+        <LinearLayout
+            android:id="@+id/menu1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imageButtonLogo"
             android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:orientation="vertical"
-            android:weightSum="1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageButton
-                android:id="@+id/imageButtonLogo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorPrimary"
-                app:srcCompat="@drawable/logo" />
-
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:gravity="top|center"
+            android:orientation="horizontal">
 
             <LinearLayout
-                android:id="@+id/menu1"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imageButtonLogo"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:gravity="top|center"
-                android:orientation="horizontal">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_width="0dp"
+                <ImageButton
+                    android:id="@+id/imageButtonProgServicio"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:layout_gravity="center"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onClick_ProgramarServicio"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/clienteprincipalprogramarservicios" />
+
+                <TextView
+                    android:id="@+id/textView2"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/imageButtonProgServicio"
-                        android:layout_width="match_parent"
-                        android:layout_height="96dp"
-                        android:layout_gravity="center"
-                        android:background="@color/colorPrimary"
-                        android:onClick="onClick_ProgramarServicio"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/clienteprincipalprogramarservicios" />
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Consulta Disponibilidad y Agenda tu Servicio"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-
-                    android:orientation="vertical">
-
-                    <ImageButton
-                        android:id="@+id/imageButtonPerfil"
-                        android:layout_width="match_parent"
-                        android:layout_height="96dp"
-                        android:background="@color/colorPrimary"
-                        android:onClick="onClick_Perfil"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/clienteprincipalperfil" />
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Mi Perfil"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-
+                    android:gravity="center"
+                    android:text="Consulta Disponibilidad y Agenda tu Servicio"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/menu2"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/menu1"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:gravity="top|center"
-                android:orientation="horizontal">
+                android:layout_weight="1"
 
-                <LinearLayout
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imageButtonPerfil"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="96dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onClick_Perfil"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/clienteprincipalperfil" />
 
-                    <ImageButton
-                        android:id="@+id/imageButtonServicios"
-                        android:layout_width="match_parent"
-                        android:layout_height="96dp"
-                        android:background="@color/colorPrimary"
-                        android:scaleType="fitCenter"
-                        android:onClick="onClick_ServiciosActivos"
-                        app:srcCompat="@drawable/clienteprincipalservicios" />
-
-                    <TextView
-                        android:id="@+id/textView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Mis Servicios Activos"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
-
-                <LinearLayout
+                <TextView
+                    android:id="@+id/textView3"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:orientation="vertical">
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mi Perfil"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
 
-                    <ImageButton
-                        android:id="@+id/imageButtonBlogNoticias"
-                        android:layout_width="match_parent"
-                        android:layout_height="96dp"
-                        android:background="@color/colorPrimary"
-                        android:scaleType="fitCenter"
-                        app:srcCompat="@drawable/clienteprincipalblognoticias" />
 
-                    <TextView
-                        android:id="@+id/textView5"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:text="Blog y Noticias"
-                        android:textColor="@android:color/white" />
-                </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/menu2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/menu1"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:gravity="top|center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageButton
+                    android:id="@+id/imageButtonServicios"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:background="@color/colorPrimary"
+                    android:onClick="onClick_ServiciosActivos"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/clienteprincipalservicios" />
+
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Mis Servicios Activos"
+                    android:textColor="@android:color/white" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_below="@+id/menu2"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
+                android:layout_weight="1"
                 android:orientation="vertical">
 
+                <ImageButton
+                    android:id="@+id/imageButtonBlogNoticias"
+                    android:layout_width="match_parent"
+                    android:layout_height="96dp"
+                    android:background="@color/colorPrimary"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@drawable/clienteprincipalblognoticias" />
+
                 <TextView
-                    android:id="@+id/textViewUsuario"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/textView5"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="32dp"
-                    android:layout_weight="1"
                     android:gravity="center"
-                    android:text="TextView"
+                    android:text="Blog y Noticias"
                     android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textViewLogOut"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewUsuario"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:onClick="onClick_LogOut"
-                    android:text="@string/cerrar_sesi_n"
-                    android:textColor="@android:color/white" />
-
-                <TextView
-                    android:id="@+id/textViewHelp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/textViewLogOut"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_weight="1"
-                    android:gravity="bottom"
-                    android:onClick="onClick_Ayuda"
-                    android:text="Necesitas Ayuda?"
-                    android:textColor="@android:color/white" />
-
             </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/menu2"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="8dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewUsuario"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="26dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="TextView"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textViewLogOut"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewUsuario"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:onClick="onClick_LogOut"
+                android:text="@string/cerrar_sesi_n"
+                android:textColor="@android:color/white" />
+
+            <TextView
+                android:id="@+id/textViewHelp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textViewLogOut"
+                android:layout_marginLeft="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:gravity="bottom"
+                android:onClick="onClick_Ayuda"
+                android:text="Necesitas Ayuda?"
+                android:textColor="@android:color/white" />
 
         </LinearLayout>
 
-    </android.support.v4.widget.NestedScrollView>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

@@ -28,4 +28,6 @@
     <string name="title_activity_historial">HistorialActivity</string>
     <string name="idservicio" />
     <string name="id_servicio">Id Servicio</string>
+    <string name="map_fragment">Map Fragment</string>
+
 </resources>
