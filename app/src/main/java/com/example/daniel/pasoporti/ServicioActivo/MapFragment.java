@@ -122,6 +122,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             @Override
             public void onStateChange(boolean active) {
                 Log.d(TAG, "onStateChange: "+active);
+
             }
         });
 
