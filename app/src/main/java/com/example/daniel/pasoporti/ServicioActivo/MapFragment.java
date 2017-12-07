@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.codetroopers.betterpickers.OnDialogDismissListener;
+import com.ebanx.swipebtn.OnActiveListener;
 import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
 import com.example.daniel.pasoporti.Clases.Servicio;
@@ -98,9 +100,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         v= inflater.inflate(R.layout.fragment_map, container, false);
         swipeButton=(SwipeButton) v.findViewById(R.id.SwipeButton);
 
-        if(mListener.getTipo().equals("Cliente")){
+        /*if(mListener.getTipo().equals("Cliente")){
             swipeButton.setVisibility(View.GONE);
-        }
+        }*/
+
         mDatabase= FirebaseDatabase.getInstance();
         mServiciosReference=mDatabase.getReference("Servicios");
         mAuth= FirebaseAuth.getInstance();
@@ -123,13 +126,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         });
 
         mapView=(MapView) v.findViewById(R.id.map);
-        swipeButton.setOnStateChangeListener(new OnStateChangeListener() {
-            @Override
-            public void onStateChange(boolean active) {
-                Log.d(TAG, "onStateChange: "+active);
 
+        swipeButton.setOnActiveListener(new OnActiveListener() {
+            @Override
+            public void onActive() {
+                Log.d(TAG, "onActive: Activo");
             }
         });
+
 
 
         return v;
