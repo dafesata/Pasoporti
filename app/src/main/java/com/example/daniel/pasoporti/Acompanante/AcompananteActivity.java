@@ -12,6 +12,7 @@ import com.example.daniel.pasoporti.Clases.Usuario;
 import com.example.daniel.pasoporti.LoginActivity;
 import com.example.daniel.pasoporti.PerfilActivity;
 import com.example.daniel.pasoporti.R;
+import com.example.daniel.pasoporti.ServicioActivo.ServicioActivo;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -84,6 +85,9 @@ public class AcompananteActivity extends AppCompatActivity {
     }
 
     public void onClick_ServiciosActivos(View view) {
+        Intent i=new Intent(AcompananteActivity.this, ServicioActivo.class);
+        i.putExtra("Tipo","Acompañante");
+        startActivity(i);
     }
 
     public void onClick_LogOut(View view) {

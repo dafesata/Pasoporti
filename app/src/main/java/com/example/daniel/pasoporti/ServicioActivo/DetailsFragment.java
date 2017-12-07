@@ -7,8 +7,19 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
+import com.example.daniel.pasoporti.Clases.Acompanado;
+import com.example.daniel.pasoporti.Clases.Servicio;
 import com.example.daniel.pasoporti.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
+import com.google.firebase.database.ValueEventListener;
+import com.rengwuxian.materialedittext.MaterialEditText;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,6 +38,32 @@ public class DetailsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private int mParam1;
     private String mParam2;
+
+    private View v;
+
+    private String TAG= this.getClass().getName();
+    private TextView servicioId,servicioEstado;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase mDatabase;
+    private DatabaseReference mServiciosReference,mAcompanadosReference;
+    private Query query;
+    private Servicio servicio;
+    private Acompanado acompanado;
+
+    private MaterialEditText TipoServ;
+    private MaterialEditText Fecha;
+    private MaterialEditText Hora;
+    private MaterialEditText IdServicio;
+    private MaterialEditText Nombre;
+    private MaterialEditText TipoId;
+    private MaterialEditText Id;
+    private MaterialEditText DirRecogida;
+    private MaterialEditText DirCita;
+    private MaterialEditText DirRegreso;
+    private MaterialEditText Acompañante;
+    private MaterialEditText CAcomp;
+    private MaterialEditText CCond;
+    private MaterialEditText CVehic;
 
     private OnFragmentInteractionListener mListener;
 
@@ -65,8 +102,105 @@ public class DetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_details, container, false);
 
+        v= inflater.inflate(R.layout.fragment_details, container, false);
+
+        mDatabase= FirebaseDatabase.getInstance();
+        mServiciosReference=mDatabase.getReference("Servicios");
+        mAcompanadosReference=mDatabase.getReference("Acompanados");
+        mAuth= FirebaseAuth.getInstance();
+        fields();
+
+        mServiciosReference.child(mListener.getServicio()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                servicio=new Servicio().getConvertedObject(dataSnapshot);
+                query=mAcompanadosReference.orderByChild("Servicios/"+servicio.getUID()).equalTo(true);
+                query.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for(DataSnapshot snap:dataSnapshot.getChildren()) {
+                            acompanado = new Acompanado().getConvertedObject(snap);
+                        }
+                        TipoServ.setText(servicio.getTipoServicio());
+                        Fecha.setText(servicio.getFecha());
+                        Hora.setText(servicio.getHora());
+                        IdServicio.setText(String.valueOf(servicio.getId()));
+                        Nombre.setText(acompanado.getNombre());
+                        TipoId.setText(acompanado.getTipoId());
+                        Id.setText(String.valueOf(acompanado.getId()));
+                        DirRecogida.setText(servicio.getDirRecogida());
+                        DirCita.setText(servicio.getDirLlevar());
+                        DirRegreso.setText(servicio.getDirRegreso());
+                            /*
+                                FALTA ACOMPAÑANTE
+                            */
+                        CAcomp.setText(servicio.getCAcompanante());
+                        CCond.setText(servicio.getCConductor());
+                        CVehic.setText(servicio.getCVehiculo());
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+        return v;
+
+    }
+
+    public void fields(){
+        TipoServ = (MaterialEditText)v.findViewById(R.id.activo_tiposerv);
+        Fecha = (MaterialEditText)v.findViewById(R.id.activo_fecha);
+        Hora = (MaterialEditText)v.findViewById(R.id.activo_hora);
+        IdServicio = (MaterialEditText)v.findViewById(R.id.activo_idserv);
+        Nombre = (MaterialEditText)v.findViewById(R.id.activo_nombre);
+        TipoId = (MaterialEditText)v.findViewById(R.id.activo_tipoDoc);
+        Id = (MaterialEditText)v.findViewById(R.id.activo_numidentificacion);
+        DirRecogida = (MaterialEditText)v.findViewById(R.id.activo_direcogida);
+        DirCita = (MaterialEditText)v.findViewById(R.id.activo_direcita);
+        DirRegreso = (MaterialEditText)v.findViewById(R.id.activo_direfinalserv);
+        Acompañante = (MaterialEditText)v.findViewById(R.id.activo_acompanante);
+        CAcomp = (MaterialEditText)v.findViewById(R.id.activo_califacomp);
+        CCond = (MaterialEditText)v.findViewById(R.id.activo_califcond);
+        CVehic = (MaterialEditText)v.findViewById(R.id.activo_califveh);
+
+        TipoServ.setFocusable(false);
+        TipoServ.setFocusableInTouchMode(false);
+        Fecha.setFocusable(false);
+        Fecha.setFocusableInTouchMode(false);
+        Hora.setFocusable(false);
+        Hora.setFocusableInTouchMode(false);
+        IdServicio.setFocusable(false);
+        IdServicio.setFocusableInTouchMode(false);
+        Nombre.setFocusable(false);
+        Nombre.setFocusableInTouchMode(false);
+        TipoId.setFocusable(false);
+        TipoId.setFocusableInTouchMode(false);
+        Id.setFocusable(false);
+        Id.setFocusableInTouchMode(false);
+        DirRecogida.setFocusable(false);
+        DirRecogida.setFocusableInTouchMode(false);
+        DirCita.setFocusable(false);
+        DirCita.setFocusableInTouchMode(false);
+        DirRegreso.setFocusable(false);
+        DirRegreso.setFocusableInTouchMode(false);
+        Acompañante.setFocusable(false);
+        Acompañante.setFocusableInTouchMode(false);
+        CAcomp.setFocusable(false);
+        CAcomp.setFocusableInTouchMode(false);
+        CCond.setFocusable(false);
+        CCond.setFocusableInTouchMode(false);
+        CVehic.setFocusable(false);
+        CVehic.setFocusableInTouchMode(false);
     }
 
 
@@ -102,5 +236,6 @@ public class DetailsFragment extends Fragment {
         void onFragmentInteraction(String text);
 
         String getServicio();
+        String getTipo();
     }
 }

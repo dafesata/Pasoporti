@@ -100,6 +100,7 @@ public class ClienteWelcomeActivity extends AppCompatActivity {
 
     public void onClick_ServiciosActivos(View view) {
         Intent i= new Intent(ClienteWelcomeActivity.this, ServicioActivo.class);
+        i.putExtra("Tipo","Cliente");
         startActivity(i);
     }
 }

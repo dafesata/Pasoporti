@@ -1,9 +1,11 @@
 package com.example.daniel.pasoporti.ServicioActivo;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -95,13 +97,16 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         // Inflate the layout for this fragment
         v= inflater.inflate(R.layout.fragment_map, container, false);
         swipeButton=(SwipeButton) v.findViewById(R.id.SwipeButton);
+
+        if(mListener.getTipo().equals("Cliente")){
+            swipeButton.setVisibility(View.GONE);
+        }
         mDatabase= FirebaseDatabase.getInstance();
         mServiciosReference=mDatabase.getReference("Servicios");
         mAuth= FirebaseAuth.getInstance();
 
         servicioId= (TextView) v.findViewById(R.id.Map_ServicioId);
         servicioEstado=(TextView) v.findViewById(R.id.Map_ServicioEstado);
-        Log.d(TAG, "onCreateView: "+mListener.getServicio());
 
         mServiciosReference.child(mListener.getServicio()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -180,5 +185,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         void onFragmentInteraction(String text);
 
         String getServicio();
+
+        String getTipo();
+
+
     }
 }
