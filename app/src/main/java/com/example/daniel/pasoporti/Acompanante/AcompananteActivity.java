@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.daniel.pasoporti.Clases.Usuario;
+import com.example.daniel.pasoporti.Historial.HistorialActivity;
 import com.example.daniel.pasoporti.LoginActivity;
 import com.example.daniel.pasoporti.PerfilActivity;
 import com.example.daniel.pasoporti.R;
@@ -76,6 +77,9 @@ public class AcompananteActivity extends AppCompatActivity {
     }
 
     public void onClick_MisServicios(View view) {
+        Intent i = new Intent(AcompananteActivity.this, HistorialActivity.class);
+        i.putExtra("Tipo","Acompanante");
+        startActivity(i);
     }
 
     public void onClick_Perfil(View view) {
@@ -86,7 +90,7 @@ public class AcompananteActivity extends AppCompatActivity {
 
     public void onClick_ServiciosActivos(View view) {
         Intent i=new Intent(AcompananteActivity.this, ServicioActivo.class);
-        i.putExtra("Tipo","Acompañante");
+        i.putExtra("Tipo","Acompanante");
         startActivity(i);
     }
 

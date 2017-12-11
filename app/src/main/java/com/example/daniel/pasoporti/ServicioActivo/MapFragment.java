@@ -1,27 +1,38 @@
 package com.example.daniel.pasoporti.ServicioActivo;
 
+import android.app.AlertDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+import android.provider.Settings;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.codetroopers.betterpickers.OnDialogDismissListener;
 import com.ebanx.swipebtn.OnActiveListener;
-import com.ebanx.swipebtn.OnStateChangeListener;
 import com.ebanx.swipebtn.SwipeButton;
+import com.example.daniel.pasoporti.BuildConfig;
 import com.example.daniel.pasoporti.Clases.Servicio;
 import com.example.daniel.pasoporti.R;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.MapsInitializer;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -29,6 +40,10 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -58,9 +73,19 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
     private Query query;
     private Servicio servicio;
     private GoogleMap mGoogleMap;
+    private LocationManager mManager;
     private MapView mapView;
     private View v;
     private SwipeButton swipeButton;
+
+    private int REQUEST_CODE = 1;
+    private BroadcastReceiver mLocationReceiver;
+    protected Boolean mRequestingLocationUpdates;
+    private Intent mRequestLocationIntent;
+    protected final static String LOCATION_KEY = "location-key";
+    protected final static String REQUESTING_LOCATION_UPDATES_KEY = "requesting-location-updates-key";
+
+    private Location mCurrentLocation;
 
     public MapFragment() {
         // Required empty public constructor
@@ -100,9 +125,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
         v= inflater.inflate(R.layout.fragment_map, container, false);
         swipeButton=(SwipeButton) v.findViewById(R.id.SwipeButton);
 
-        /*if(mListener.getTipo().equals("Cliente")){
+        if(mListener.getTipo().equals("Cliente")){
             swipeButton.setVisibility(View.GONE);
-        }*/
+        }
 
         mDatabase= FirebaseDatabase.getInstance();
         mServiciosReference=mDatabase.getReference("Servicios");
@@ -110,13 +135,68 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         servicioId= (TextView) v.findViewById(R.id.Map_ServicioId);
         servicioEstado=(TextView) v.findViewById(R.id.Map_ServicioEstado);
+        mapView=(MapView) v.findViewById(R.id.map);
 
-        mServiciosReference.child(mListener.getServicio()).addListenerForSingleValueEvent(new ValueEventListener() {
+
+
+        mServiciosReference.child(mListener.getServicio()).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 servicio=new Servicio().getConvertedObject(dataSnapshot);
                 servicioId.setText("Servicio "+servicio.getId());
                 servicioEstado.setText("Estado: "+servicio.getEstado());
+
+                swipeButton.setOnActiveListener(new OnActiveListener() {
+                    @Override
+                    public void onActive() {
+                        Log.d(TAG, "onActive: Activo");
+                        AlertDialog.Builder dialogBuilder= new AlertDialog.Builder(getActivity(),R.style.MyDialogTheme);
+
+                        dialogBuilder.setTitle("Cambiar Estado");
+                        dialogBuilder.setMessage("¿Seguro desea cambiar el estado?");
+                        dialogBuilder.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                String newEstado = null;
+                                switch (servicio.getEstado()){
+                                    case "Aprobado":
+                                        newEstado="Iniciado";
+                                        break;
+                                    case "Iniciado":
+                                        newEstado="En Cita";
+                                        break;
+                                    case "En Cita":
+                                        newEstado="Retorno";
+                                        break;
+                                    case "Retorno":
+                                        newEstado="Finalizado";
+                                        break;
+                                }
+                                Map<String,Object> ServicioMap = new HashMap<>();
+                                ServicioMap.put("estado",newEstado);
+
+                                mDatabase.getReference("Servicios").child(servicio.getUID()).updateChildren(ServicioMap).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        servicioEstado.setText("Estado: "+servicio.getEstado());
+                                        Toast.makeText(getActivity(), "Estado Cambiado", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+
+
+                            }
+                        });
+
+                        dialogBuilder.setNegativeButton("Cancelar", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+
+                        dialogBuilder.show();
+                    }
+                });
             }
 
             @Override
@@ -125,16 +205,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
             }
         });
 
-        mapView=(MapView) v.findViewById(R.id.map);
-
-        swipeButton.setOnActiveListener(new OnActiveListener() {
-            @Override
-            public void onActive() {
-                Log.d(TAG, "onActive: Activo");
-            }
-        });
-
-
+        InitiateService(savedInstanceState);
 
         return v;
     }
@@ -192,6 +263,86 @@ public class MapFragment extends Fragment implements OnMapReadyCallback {
 
         String getTipo();
 
-
     }
+    private void buildAlertMessageNoGps() {
+        final AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.MyDialogTheme);
+        builder.setTitle("GPS Desactivado");
+        builder.setMessage("Su GPS se encuentra desactivado, desea activarlo?");
+        builder.setCancelable(false);
+
+        builder.setPositiveButton("Si", new DialogInterface.OnClickListener() {
+            public void onClick(final DialogInterface dialog, final int id) {
+                launchGPSOptions();
+
+            }
+        });
+    }
+
+    private void launchGPSOptions()
+    {
+        Intent intent = new Intent(Settings.ACTION_LOCATION_SOURCE_SETTINGS);
+        startActivityForResult(intent, REQUEST_CODE);
+    }
+
+
+    private void updateMap() {
+        mGoogleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(mCurrentLocation.getLatitude(),mCurrentLocation.getLongitude()), 21f));
+    }
+
+    private void updateValuesFromBundle(Bundle savedInstanceState) {
+        if (BuildConfig.DEBUG) {
+            Log.d(TAG, "Updating values from bundle");
+        }
+    }
+
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        savedInstanceState.putBoolean(REQUESTING_LOCATION_UPDATES_KEY, mRequestingLocationUpdates);
+
+//        savedInstanceState.putString(LAST_UPDATED_TIME_STRING_KEY, mLastUpdateTime);
+        super.onSaveInstanceState(savedInstanceState);
+    }
+
+    public void InitiateService(Bundle savedInstanceState){
+        mManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        final LocationManager manager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+
+        if (!manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
+            buildAlertMessageNoGps();
+        }
+
+        mLocationReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                final LatLng cLocation = intent.getParcelableExtra(LocationUpdaterServices.COPA_MESSAGE);
+                mCurrentLocation = new Location("");
+                mCurrentLocation.setLatitude(cLocation.latitude);
+                mCurrentLocation.setLongitude(cLocation.longitude);
+                mServiciosReference.child(mListener.getServicio()).addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        servicio=new Servicio().getConvertedObject(dataSnapshot);
+                        Map<String,Object> ServicioMap = new HashMap<>();
+                        ServicioMap.put("Lat",cLocation.latitude);
+                        ServicioMap.put("Lon",cLocation.longitude);
+
+                        mDatabase.getReference("Servicios").child(servicio.getUID()).child("Localizacion").updateChildren(ServicioMap);
+                        Log.d(TAG, "onDataChange: "+cLocation.latitude);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+                updateMap();
+
+            }
+        };
+
+        mRequestLocationIntent = new Intent(getActivity(), LocationUpdaterServices.class);
+        getActivity().startService(mRequestLocationIntent);
+
+        updateValuesFromBundle(savedInstanceState);
+    }
+
 }

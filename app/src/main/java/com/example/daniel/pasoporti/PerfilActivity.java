@@ -25,7 +25,7 @@ import android.widget.Toast;
 import com.example.daniel.pasoporti.Clases.Usuario;
 import com.example.daniel.pasoporti.Cliente.Acompanados.AcompanadosActivity;
 import com.example.daniel.pasoporti.Cliente.ClienteWelcomeActivity;
-import com.example.daniel.pasoporti.Cliente.Historial.HistorialActivity;
+import com.example.daniel.pasoporti.Historial.HistorialActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
@@ -373,6 +373,7 @@ public class PerfilActivity extends AppCompatActivity {
 
     public void onClick_Historial(View view) {
         Intent i = new Intent(PerfilActivity.this, HistorialActivity.class);
+        i.putExtra("Tipo","Cliente");
         startActivity(i);
     }
 }

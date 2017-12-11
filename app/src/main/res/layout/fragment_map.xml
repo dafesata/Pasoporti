@@ -49,7 +49,7 @@
         android:layout_marginBottom="30dp"
         android:orientation="vertical">
 
-        <com.ebanx.swipebtn.SwipeButton
+         <com.ebanx.swipebtn.SwipeButton
             android:id="@+id/SwipeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,19 +58,19 @@
             app:button_background="@drawable/shape_button"
             app:button_bottom_padding="20dp"
             app:button_image_disabled="@drawable/ic_chevron_right_black_24dp"
-            app:button_image_enabled="@drawable/ic_chevron_right_black_24dp"
+            app:button_image_height="60dp"
+            app:button_image_width="100dp"
             app:button_left_padding="20dp"
             app:button_right_padding="20dp"
             app:button_top_padding="20dp"
-            app:inner_text="Cambiar Estado"
+            app:has_activate_state="false"
+            app:initial_state="disabled"
+            app:inner_text="SWIPE"
             app:inner_text_background="@drawable/shape_rounded"
             app:inner_text_bottom_padding="18dp"
             app:inner_text_color="@android:color/white"
             app:inner_text_size="16sp"
-            app:inner_text_top_padding="18dp"
-            app:has_activate_state="false"
-            app:initial_state="disabled"
-           />
+            app:inner_text_top_padding="18dp" />
 
     </LinearLayout>
 </FrameLayout>

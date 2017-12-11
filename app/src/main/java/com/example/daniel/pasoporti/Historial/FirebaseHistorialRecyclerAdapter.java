@@ -1,4 +1,4 @@
-package com.example.daniel.pasoporti.Cliente.Historial;
+package com.example.daniel.pasoporti.Historial;
 
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;

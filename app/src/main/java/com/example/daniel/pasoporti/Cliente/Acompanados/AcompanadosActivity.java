@@ -27,7 +27,7 @@ import android.widget.Toast;
 
 import com.example.daniel.pasoporti.Clases.Acompanado;
 import com.example.daniel.pasoporti.Clases.Servicio;
-import com.example.daniel.pasoporti.Cliente.Historial.HistorialActivity;
+import com.example.daniel.pasoporti.Historial.HistorialActivity;
 import com.example.daniel.pasoporti.PerfilActivity;
 import com.example.daniel.pasoporti.R;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -283,6 +283,7 @@ public class AcompanadosActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent i=new Intent(AcompanadosActivity.this, HistorialActivity.class);
+                i.putExtra("Tipo","Cliente");
                 i.putExtra("AcompanadoUID",acompanado.getUID());
                 startActivity(i);
             }

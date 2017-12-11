@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.daniel.pasoporti.Cliente.Historial.HistorialActivity"
+    tools:context="com.example.daniel.pasoporti.Historial.HistorialActivity"
     tools:showIn="@layout/activity_historial">
 
     <android.support.v4.widget.NestedScrollView
@@ -66,6 +66,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Layout_acompanado_historial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="24dp"
@@ -74,7 +75,7 @@
                     android:background="@drawable/rounded"
                     android:orientation="horizontal">
 
-                    <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
+                        <com.weiwangcn.betterspinner.library.material.MaterialBetterSpinner
                         android:id="@+id/spinner_Historial_Nombre"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -87,6 +88,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/Layout_info_historial"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">

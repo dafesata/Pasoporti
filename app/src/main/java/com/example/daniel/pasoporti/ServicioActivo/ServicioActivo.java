@@ -103,10 +103,37 @@ public class ServicioActivo extends AppCompatActivity implements MapFragment.OnF
 
                             }
                         });
+                    }else{
+                        if(servicio.getEstado().equals("Aprobado") && Tipo.equals("Acompanante")){
+                            Query Aquery;
+                            Aquery=mAcompanadosReference.orderByChild("Servicios/"+servicio.getUID()).equalTo(true);
+                            Aquery.addListenerForSingleValueEvent(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(DataSnapshot dataSnapshot) {
+
+                                    for(DataSnapshot snap:dataSnapshot.getChildren()) {
+                                        acompanado = new Acompanado().getConvertedObject(snap);
+                                        tabHost.addTab(tabHost.newTabSpec(String.valueOf(servicio.getUID())).setIndicator(acompanado.getNombre()),
+                                                ParentViewPagerFragment.class, null);
+                                        index[0]++;
+
+                                    }
+                                    if (index[0]==0){
+                                        Toast.makeText(ServicioActivo.this,"No hay Servicios Activos",Toast.LENGTH_LONG).show();
+                                    }
 
 
+                                }
 
+                                @Override
+                                public void onCancelled(DatabaseError databaseError) {
+
+                                }
+                            });
+
+                        }
                     }
+
                 }
             }
 

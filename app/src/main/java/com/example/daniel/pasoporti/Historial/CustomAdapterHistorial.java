@@ -1,4 +1,4 @@
-package com.example.daniel.pasoporti.Cliente.Historial;
+package com.example.daniel.pasoporti.Historial;
 
 import android.content.Context;
 import android.support.annotation.Nullable;
@@ -17,7 +17,6 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
